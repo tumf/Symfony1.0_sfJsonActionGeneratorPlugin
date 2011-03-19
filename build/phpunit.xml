@@ -17,11 +17,13 @@
     </testsuite>
   </testsuites>
 
+  <!--
   <filter>
     <whitelist>
-      <directory>../test</directory>
+      <directory>../lib</directory>
     </whitelist>
   </filter>
+  -->
 
   <logging>
     <log type="coverage-html" target="coverage" title="Name of Project"
