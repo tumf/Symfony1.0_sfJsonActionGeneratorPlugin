@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="Symfony1.0_sfJsonActionGeneratorPlugin" default="build" basedir=".">
-  <property name="source" value="data lib test apps"/>
+  <property name="source" value="data lib test"/>
 
   <target name="clean"
           description="Clean up and create artifact directories">
