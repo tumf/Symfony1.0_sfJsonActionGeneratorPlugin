@@ -1,1 +1,6 @@
 .svn
+build/logs
+build/coverage
+build/code-browser
+build/api
+build/pdepend
