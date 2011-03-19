@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<project name="StringUtil" basedir="." default="checkstyle">
-  <target name="checkstyle">
-    <exec command="phpcs --standard=PEAR --report=checkstyle --ignore=*Test.php -n lib > reports/checkstyle.xml" />
-  </target>
-</project>
