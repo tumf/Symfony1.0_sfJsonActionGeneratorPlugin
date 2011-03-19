@@ -48,8 +48,8 @@
   </target>
 
   <target name="phpmd"
-          description="Generate pmd.xml using exec">
-    <PHPMD executable="phpmd">
+          description="Generate pmd.xml using PHPMD">
+    <exec executable="phpmd">
       <arg line="${source}
                  xml
                  build/phpmd.xml
