@@ -49,12 +49,12 @@
 
   <target name="phpmd"
           description="Generate pmd.xml using PHPMD">
-    <exec executable="phpmd">
-      <arg line="${source}
-                 xml
-                 build/phpmd.xml
-                 --reportfile ${basedir}/build/logs/pmd.xml" />
-    </exec>
+    <phpmd rulesets="codesize,unusedcode,design,naming">
+      <fileset dir="${source}" >
+        <include name="**/*.php" />
+      </fileset>
+      <formatter type="xml" outfile="${basedir}/build/logs/pmd.xml" />
+    </phpmd>
   </target>
 
   <target name="phpcpd"
