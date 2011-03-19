@@ -2,6 +2,7 @@
 
 <project name="Symfony1.0_sfJsonActionGeneratorPlugin" default="build" basedir=".">
   <property name="source" value="."/>
+  <property name="ignore" value="build"/>
 
   <target name="clean"
           description="Clean up and create artifact directories">
@@ -45,6 +46,7 @@
       <arg line="--jdepend-xml=${basedir}/build/logs/jdepend.xml
                  --jdepend-chart=${basedir}/build/pdepend/dependencies.svg
                  --overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg
+                 --exclude=${ignore}
                  ${source}" />
     </exec>
   </target>
@@ -55,6 +57,7 @@
       <arg line="${source}
                  xml
                  build/phpmd.xml
+                 --ignore=${ignore}
                  --reportfile ${basedir}/build/logs/pmd.xml" />
     </exec>
   </target>
@@ -62,14 +65,19 @@
   <target name="phpcpd"
           description="Generate pmd-cpd.xml using PHPCPD">
     <exec executable="phpcpd">
-      <arg line="--log-pmd ${basedir}/build/logs/pmd-cpd.xml ${source}" />
+      <arg line="--log-pmd ${basedir}/build/logs/pmd-cpd.xml
+                 --exclude ${ignore}
+                 ${source}" />
     </exec>
   </target>
 
   <target name="phploc"
           description="Generate phploc.csv">
     <exec executable="phploc">
-      <arg line="--log-csv ${basedir}/build/logs/phploc.csv ${source}" />
+      <arg line="--log-csv ${basedir}/build/logs/phploc.csv
+                 --exclude ${ignore}
+                 --suffixes php
+                 ${source}" />
     </exec>
   </target>
 
@@ -79,6 +87,7 @@
       <arg line="--report=checkstyle
                  --report-file=${basedir}/build/logs/checkstyle.xml
                  --standard=build/phpcs.xml
+                 --extensions=php
                  ${source}" />
     </exec>
   </target>
@@ -86,16 +95,18 @@
   <target name="phpdoc"
           description="Generate API documentation using PHPDocumentor">
     <exec executable="phpdoc">
-      <arg line="-d ${source} -t ${basedir}/build/api" />
+      <arg line="-d ${source} -t ${basedir}/build/api -i ${ignore}" />
     </exec>
   </target>
 
   <target name="phpcb"
           description="Aggregate tool output with PHP_CodeBrowser">
     <exec executable="phpcb">
-      <arg line="--log    ${basedir}/build/logs
-                 --source ${source}
-                 --output ${basedir}/build/code-browser" />
+      <arg line="--log=${basedir}/build/logs
+                 --source=${source}
+                 --output=${basedir}/build/code-browser
+                 --ignore=${ignore}
+                 " />
     </exec>
   </target>
 
