@@ -1,4 +1,0 @@
-generator:
-  class:          sfJsonActionGenerator
-  param:
-    theme:        default
